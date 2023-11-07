@@ -18,5 +18,5 @@ class Item < ApplicationRecord
   validates :condition_id, numericality: { other_than: 1 , message: "can't be blank"}
   validates :charge_id, numericality: { other_than: 1 , message: "can't be blank"}
   validates :shipping_date_id, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }, format: { with: /\A[0-9]+\z/, message: "is not a number" }
+  validates :price, presence: true, numericality: { only_integer: true,greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
 end
