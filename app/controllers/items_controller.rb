@@ -24,7 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item =Item.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
   def update
@@ -45,9 +45,8 @@ class ItemsController < ApplicationController
 
   def movie_to_index
     @item = Item.find(params[:id])
-    unless @item.user == current_user
-      redirect_to root_path
-    end
-  end
+    return if @item.user == current_user
 
+    redirect_to root_path
+  end
 end
