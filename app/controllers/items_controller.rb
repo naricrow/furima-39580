@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
   before_action :move_to_index, only: [:edit, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-
+  before_action :return_index, only: :edit
   def index
     @items = Item.all.order('created_at DESC')
   end
@@ -53,6 +53,13 @@ class ItemsController < ApplicationController
   def move_to_index
     set_item  # before_action: :set_itemで呼び出すとエラーになるため、直接記述しました
     return if @item.user == current_user
+
+    redirect_to root_path
+  end
+
+  def return_index
+    set_item
+    return unless @item.purchase.present?
 
     redirect_to root_path
   end
