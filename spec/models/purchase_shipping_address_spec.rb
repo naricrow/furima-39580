@@ -21,7 +21,7 @@ RSpec.describe PurchaseShippingAddress, type: :model do
       it '郵便番号が空だと保存できない' do
         @purchase_shipping_address.post_code = ''
         @purchase_shipping_address.valid?
-        expect(@purchase_shipping_address.errors.full_messages).to include("郵便番号を入力してください")
+        expect(@purchase_shipping_address.errors.full_messages).to include('郵便番号を入力してください')
       end
       it '郵便番号が3桁ハイフン4桁でないと保存できない' do
         @purchase_shipping_address.post_code = '1112222'
@@ -36,22 +36,22 @@ RSpec.describe PurchaseShippingAddress, type: :model do
       it '都道府県が選択されていないと保存できない' do
         @purchase_shipping_address.area_id = 1
         @purchase_shipping_address.valid?
-        expect(@purchase_shipping_address.errors.full_messages).to include("都道府県を選択してください")
+        expect(@purchase_shipping_address.errors.full_messages).to include('都道府県を選択してください')
       end
       it '市区町村が空だと保存できない' do
         @purchase_shipping_address.city = ''
         @purchase_shipping_address.valid?
-        expect(@purchase_shipping_address.errors.full_messages).to include("市区町村を入力してください")
+        expect(@purchase_shipping_address.errors.full_messages).to include('市区町村を入力してください')
       end
       it '番地が空だと保存できない' do
         @purchase_shipping_address.address = ''
         @purchase_shipping_address.valid?
-        expect(@purchase_shipping_address.errors.full_messages).to include("番地を入力してください")
+        expect(@purchase_shipping_address.errors.full_messages).to include('番地を入力してください')
       end
       it '電話番号が空だと保存できない' do
         @purchase_shipping_address.phone_number = ''
         @purchase_shipping_address.valid?
-        expect(@purchase_shipping_address.errors.full_messages).to include("電話番号を入力してください")
+        expect(@purchase_shipping_address.errors.full_messages).to include('電話番号を入力してください')
       end
       it '電話番号が10桁未満だと保存できない' do
         @purchase_shipping_address.phone_number = '111111111'
@@ -71,17 +71,17 @@ RSpec.describe PurchaseShippingAddress, type: :model do
       it 'user_idが紐づいていないと保存できない' do
         @purchase_shipping_address.user_id = nil
         @purchase_shipping_address.valid?
-        expect(@purchase_shipping_address.errors.full_messages).to include("Userを入力してください")
+        expect(@purchase_shipping_address.errors.full_messages).to include('Userを入力してください')
       end
       it 'item_idが紐づいていないと保存できない' do
         @purchase_shipping_address.item_id = nil
         @purchase_shipping_address.valid?
-        expect(@purchase_shipping_address.errors.full_messages).to include("Itemを入力してください")
+        expect(@purchase_shipping_address.errors.full_messages).to include('Itemを入力してください')
       end
       it 'tokenが空では保存できない' do
         @purchase_shipping_address.token = nil
         @purchase_shipping_address.valid?
-        expect(@purchase_shipping_address.errors.full_messages).to include("クレジットカード情報を入力してください")
+        expect(@purchase_shipping_address.errors.full_messages).to include('クレジットカード情報を入力してください')
       end
     end
   end
