@@ -54,7 +54,7 @@ test:
 #
 production:
   <<: *default
-  adapter: mysql12
+  adapter: mysql2
   database: furima-39580_production
   username: root
   url: <%= ENV['DATABASE_URL'] %>
